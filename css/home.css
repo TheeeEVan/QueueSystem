@@ -6,16 +6,6 @@ designed to be used only by index.html for elements and styles specific to it
 
 */
 
-/* title */
-h1 {
-	text-align: center;
-	font-size: 40pt;
-	color: var(--black);
-
-	/* dark mode transition */
-	transition: color 0.3s ease-out;
-}
-
 /* flexbox styles for button container */
 .button-container {
 	display: flex;

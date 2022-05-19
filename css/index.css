@@ -13,7 +13,8 @@ designed to be used by all pages to ensure all general styles are consistant acr
 html, body {
 	/* color pallete variables */
 	--white: #F0F7F4;
-	--grey: #6D8EA0;
+	--grey: #959797;
+	--light-grey: #d6d6d6;
 	--blue: #016FB9;
 	--dark-blue: #00548c;
 	--orange: #F5A65B;
@@ -44,10 +45,7 @@ html, body {
 .dark-mode {
 	--white: #001011;
 	--grey: #404547;
-	--blue: #016FB9;
-	--dark-blue: #00548c;
-	--orange: #F5A65B;
-	--dark-orange: #bd7f46;
+	--light-grey: #363636;
 	--black: #F0F7F4;
 }
 
@@ -60,6 +58,54 @@ body {
 /* same as above */
 main {
 	flex: 0.95 0 auto;
+}
+
+/* title */
+h1 {
+	text-align: center;
+	font-size: 40pt;
+	color: var(--black);
+
+	/* dark mode transition */
+	transition: color 0.3s ease-out;
+}
+
+/* svg */
+.moon {
+	position: absolute;
+	top: 0.8em;
+	left: 1vw;
+	width: 2vw;
+	height: 2vw;
+}
+
+/* darkmode toggle switch styles */
+input[type="checkbox"] {
+	-webkit-appearance: none;
+	position: absolute;
+	top: 1em;
+	left: 4vw;
+	background-color: var(--light-grey);
+	width: 4vw;
+	height: 1.5vw;
+	border-radius: 20px;
+	transition: background-color 0.3s ease-out;
+}
+
+input[type="checkbox"]::before {
+	content: "";
+	position: absolute;
+	left: 0;
+	width: 1.5vw;
+	height: 1.5vw;
+	background-color: var(--grey);
+	border-radius: 1vw;
+	transform: scale(1.1);
+	transition: background-color 0.3s ease-out, left 0.3s ease-out;
+}
+
+input:checked[type="checkbox"]::before {
+	left: 2.5vw;
 }
 
 /* make footer wider */
@@ -80,7 +126,6 @@ footer > p {
 	flex-shrink: 0;
 	display: flex;
 	justify-content: center;
-	gap: 2em;
 	/* overide default padding */
 	padding: 0;
 }
@@ -91,13 +136,25 @@ footer > p {
 	color: var(--grey);
 	/* make them in a row instead of column */
 	float: left;
+	margin: 0em 1em;
 }
 
-.footer-list > li > a {
+.footer-list > li > a, footer > p > a, .back-home > a {
 	/* take color from parent instead of a tag default */
 	color: inherit;
 	/* make underline not so close */
 	text-underline-offset: 0.25em;
 	/* make cursor do click thing */
 	cursor: pointer;
+}
+
+.back-home {
+	position: absolute;
+	left: 1em;
+	bottom: 0.5em;
+}
+
+/* easy class to hide things */
+.hidden {
+	display: none !important; /* use !important to override ids etc. */
 }
