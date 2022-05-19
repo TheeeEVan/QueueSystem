@@ -1,0 +1,85 @@
+/*
+
+index.css
+----------------------
+designed to be used by all pages to ensure all general styles are consistant across pages
+
+*/
+
+
+/* import roboto because roboto is the best sans serif font */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500;700;900&display=swap');
+
+html, body {
+	/* color pallete variables */
+	--white: #F0F7F4;
+	--grey: #6D8EA0;
+	--blue: #016FB9;
+	--dark-blue: #00548c;
+	--orange: #F5A65B;
+	--dark-orange: #bd7f46;
+	--black: #001011;
+	
+	/* no scrolling */
+    height: 100%;
+
+	/* font */
+	font-family: "Roboto", sans-serif;
+	
+	/* main background for all pages */
+	background-color: var(--white);
+
+	/* remove scroll */
+	overflow: hidden;
+}
+
+/* all of this flexbox is just to force the footer to the bottom */
+body {
+	display: flex;
+	flex-direction: column;
+}
+
+/* same as above */
+main {
+	flex: 0.95 0 auto;
+}
+
+/* make footer wider */
+footer {
+	height: 10vh;
+	width: 100%;
+}
+
+/* the p in the footer */
+footer > p {
+	 color: var(--grey);
+	text-align: center;
+}
+
+/* remove dots on list */
+.footer-list {
+	list-style-type: none;
+	flex-shrink: 0;
+	display: flex;
+	justify-content: center;
+	gap: 2em;
+	/* overide default padding */
+	padding: 0;
+}
+
+/* list items  */
+.footer-list > li {
+	/* set text color to be grey cause this is a footer and it should be *sleek* */
+	color: var(--grey);
+	/* make them in a row instead of column */
+	float: left;
+}
+
+.footer-list > li > a {
+	/* take color from parent instead of a tag default */
+	color: inherit;
+	/* make underline not so close */
+	text-underline-offset: 0.25em;
+	/* make cursor do click thing */
+	cursor: pointer;
+}

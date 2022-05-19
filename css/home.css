@@ -1,0 +1,50 @@
+/*
+
+home.css
+----------------------
+designed to be used only by index.html for elements and styles specific to it
+
+*/
+
+/* title */
+h1 {
+	text-align: center;
+	font-size: 40pt;
+}
+
+/* flexbox styles for button container */
+.button-container {
+	display: flex;
+	align-content: center;
+	justify-content: center;
+	flex-wrap: wrap;
+	gap: 2em;
+}
+
+/* style the buttons to not look bad */
+.home-button {
+	/* make the buttons bigger */
+	height: 4em;
+	width: 300px;
+	/* remove border */
+	border: none;
+	/* curve edges */
+	border-radius: 10px;
+	/* set background */
+	background-color: var(--blue);
+	/* text color */
+	color: white;
+	/* font weight */
+	font-weight: 700;
+	/* font size */
+	font-size: 1.25em;
+	/* transition setup */
+	transition: all 0.3s ease-out;
+	/* cursor behavior */
+	cursor: pointer;
+}
+
+.home-button:hover {
+	/* change color on hover */
+	background-color: var(--dark-blue)
+}
