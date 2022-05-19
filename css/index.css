@@ -49,17 +49,6 @@ html, body {
 	--black: #F0F7F4;
 }
 
-/* all of this flexbox is just to force the footer to the bottom */
-body {
-	display: flex;
-	flex-direction: column;
-}
-
-/* same as above */
-main {
-	flex: 0.95 0 auto;
-}
-
 /* title */
 h1 {
 	text-align: center;
@@ -77,6 +66,8 @@ h1 {
 	left: 1vw;
 	width: 2vw;
 	height: 2vw;
+	max-height: 40px;
+	max-width: 40px;
 }
 
 /* darkmode toggle switch styles */
@@ -88,6 +79,8 @@ input[type="checkbox"] {
 	background-color: var(--light-grey);
 	width: 4vw;
 	height: 1.5vw;
+	max-height: 30px;
+	max-width: 80px;
 	border-radius: 20px;
 	transition: background-color 0.3s ease-out;
 }
@@ -98,6 +91,8 @@ input[type="checkbox"]::before {
 	left: 0;
 	width: 1.5vw;
 	height: 1.5vw;
+	max-width: 33px;
+	max-height: 33px;
 	background-color: var(--grey);
 	border-radius: 1vw;
 	transform: scale(1.1);
@@ -105,13 +100,16 @@ input[type="checkbox"]::before {
 }
 
 input:checked[type="checkbox"]::before {
-	left: 2.5vw;
+	left: min(calc(4vw -  1.5vw), 80px - 33px);
 }
 
 /* make footer wider */
 footer {
 	height: 10vh;
 	width: 100%;
+	position: absolute;
+	bottom: 0;
+	z-index: 0;
 }
 
 /* the p in the footer */

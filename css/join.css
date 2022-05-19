@@ -37,7 +37,7 @@ h2 {
 	background-color: var(--dark-orange);
 }
 
-.confirmation {
+#confirmation {
 	position: absolute;
 	display: flex;
 	align-items: center;
@@ -46,7 +46,8 @@ h2 {
 	width: 100vw;
 	top: 0;
 	left: 0;
-	background-color: rgba(0,0,0,0.5)
+	background-color: rgba(0,0,0,0.5);
+	z-index: 1;
 }
 
 .card {
@@ -57,7 +58,7 @@ h2 {
 	background-color: var(--light-grey)
 }
 
-#confirm-stay-button {
+#confirm-stay {
 	/* make the buttons bigger */
 	height: 3em;
 	width: 190px;
@@ -67,7 +68,7 @@ h2 {
 	/* curve edges */
 	border-radius: 10px;
 	/* set background */
-	background-color: #62cc6d;
+	background-color: #ed7b88;
 	/* text color */
 	color: white;
 	/* font weight */
@@ -80,8 +81,13 @@ h2 {
 	cursor: pointer;
 }
 
+.card > p {
+	color: var(--black);
+	font-size: 2em;
+	font-weight: 700;
+}
 
-#confirm-leave-button {
+#confirm-leave {
 	/* make the buttons bigger */
 	height: 3em;
 	width: 190px;
@@ -91,9 +97,9 @@ h2 {
 	/* curve edges */
 	border-radius: 10px;
 	/* set background */
-	background-color: #ed7b88;
+	background-color: #62cc62;
 	/* text color */
-	color: var(--black);
+	color: white;
 	/* font weight */
 	font-weight: 700;
 	/* font size */
@@ -104,8 +110,75 @@ h2 {
 	cursor: pointer;
 }
 
-.card > p {
-	color: var(--black);
-	font-size: 1.5em;
+.input-container {
+	margin-top: 3em;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+input[type="text"] {
+	border: var(--light-grey) solid 2px;
+	border-radius: 5px;
+	transition: outline 0.3s ease-out, border 0.5s ease-out;
+	font: inherit;
 	font-weight: 700;
+	font-size: 1.25em;
+	text-align: center;
+	padding: 10px;
+	outline: none;
+}
+
+input[type="text"]::placeholder {
+	color: var(--light-grey);
+	transition: color 0.3s ease-out;
+}
+
+input[type="text"]:focus::placeholder {
+	color: transparent;
+}
+
+input[type="text"]:focus {
+	outline: var(--blue) solid 3px;
+	border-radius: 3px;
+	border: none;
+}
+
+/* dark mode outline why */
+.dark-mode > main > div > div > input[type="text"]:focus {
+	outline: var(--orange) solid 3px;
+}
+
+#join-queue-button {
+	/* make the buttons bigger */
+	height: 2em;
+	width: 190px;
+	margin: 1em 1em;
+	/* remove border */
+	border: none;
+	/* curve edges */
+	border-radius: 10px;
+	/* set background */
+	background-color: #62cc62;
+	/* text color */
+	color: white;
+	/* font weight */
+	font-weight: 700;
+	/* font size */
+	font-size: 1.25em;
+	/* transition setup */
+	transition: all 0.3s ease-out;
+	/* cursor behavior */
+	cursor: pointer;
+}
+
+#join-queue-button:hover {
+	background-color: #3f9c3f;
+}
+
+.confirm-title {
+	color: lightgreen;
+	text-shadow: -1px -1px 0 var(--black), 1px -1px 0 var(--black), -1px 1px 0 var(--black), 1px 1px 0 var(--black);
+	font-size: 5em;
 }

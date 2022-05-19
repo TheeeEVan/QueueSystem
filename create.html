@@ -9,7 +9,22 @@
 		<link href="join.css" rel="stylesheet" type="text/css" />
 	</head>
 	<!--  this home page is just used to get the user to the correct place for what they want to do -->
-	<body>
+	<body class="dark-mode">
+		<script>
+			/* check for dark mode in cookies */
+			if (document.cookie.split("=")[0] == "dark-mode") {
+				if (document.cookie.split("=")[1] == "0")
+				{
+					document.body.classList.toggle("dark-mode")
+				}
+			}
+			/* checks if dark mode is on in os settings */
+			/* https://stackoverflow.com/a/57795495 */
+			else if (!window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+				// dark mode on
+				document.body.classList.toggle("dark-mode")
+			}
+		</script>
 		<header>
 			<!-- https://www.svgrepo.com/svg/48929/moon -->
 			<svg class="moon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 47.167 47.167" style="enable-background:new 0 0 47.167 47.167;" xml:space="preserve"><path style="fill:var(--black);transition: fill 0.3s ease-out;" d="M46.369,28.793c-11.852,5.935-26.271,1.138-32.206-10.714c-2.748-5.488-3.191-11.524-1.702-17.016 C1.197,7.236-3.255,21.263,2.544,32.844C8.479,44.696,22.898,49.493,34.75,43.558c6.364-3.187,10.69-8.821,12.417-15.19 C46.903,28.513,46.64,28.658,46.369,28.793z"/><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>
