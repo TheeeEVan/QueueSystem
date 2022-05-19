@@ -23,6 +23,10 @@ html, body {
 	/* no scrolling */
     height: 100%;
 
+	/* margin stuff */
+	margin: 0;
+	padding: 0;
+
 	/* font */
 	font-family: "Roboto", sans-serif;
 	
@@ -31,6 +35,20 @@ html, body {
 
 	/* remove scroll */
 	overflow: hidden;
+
+	/* dark mode transition */
+	transition: background-color 0.3s ease-out;
+}
+
+/* reverse some color variables for when dark mode is on */
+.dark-mode {
+	--white: #001011;
+	--grey: #404547;
+	--blue: #016FB9;
+	--dark-blue: #00548c;
+	--orange: #F5A65B;
+	--dark-orange: #bd7f46;
+	--black: #F0F7F4;
 }
 
 /* all of this flexbox is just to force the footer to the bottom */
