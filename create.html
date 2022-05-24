@@ -6,7 +6,7 @@
 	  	<meta name="viewport" content="width=device-width">
 	  	<title>Queue System</title>
 	  	<link href="/css/index.css" rel="stylesheet" type="text/css" />
-		<link href="/css/join.css" rel="stylesheet" type="text/css" />
+		<link href="/css/create.css" rel="stylesheet" type="text/css" />
 	</head>
 	<!--  this home page is just used to get the user to the correct place for what they want to do -->
 	<body class="dark-mode">
@@ -42,10 +42,18 @@
 				<h2>Current Queue Member: Jeremy</h2>
 				<br/>
 				<br/>
-				<h2>Controls</h2>
 				<div class="button-container">
-					<button>Next Queue Member</button>
-					<button>Close Queue</button>
+					<button id="next-button">Next Queue Member</button>
+					<button id="close-button">Close Queue</button>
+				</div>
+			</div>
+			<div id="confirmation" class="hidden">
+				<div class="card">
+					<p>Are you sure you want to close the queue?</p>
+					<div class="button-container">
+						<button id="confirm-stay">No, Continue the Queue</button>
+						<button id="confirm-close">Yes, Destroy the Queue</button>
+					</div>
 				</div>
 			</div>
 		</main>
@@ -60,5 +68,6 @@
 		</footer>
 		<!-- all of the scripts required -->
 		<script src="/js/darkmode.js" ></script>
+		<script src="/js/createQueue.js"></script>
 	</body>
 </html>

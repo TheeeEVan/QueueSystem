@@ -4,3 +4,127 @@ h2 {
 	text-align: center;
 	margin-top: -1em;
 }
+
+.button-container {
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	gap: 8px;
+}
+
+#close-button {
+	/* make the buttons bigger */
+	height: 2em;
+	width: 150px;
+	/* remove border */
+	border: none;
+	/* curve edges */
+	border-radius: 10px;
+	/* set background */
+	background-color: #ed7b88;
+	/* text color */
+	color: white;
+	/* font weight */
+	font-weight: 700;
+	/* font size */
+	font-size: 1.25em;
+	/* transition setup */
+	transition: all 0.3s ease-out;
+	/* cursor behavior */
+	cursor: pointer;
+}
+
+#next-button {
+	/* make the buttons bigger */
+	height: 2em;
+	width: 225px;
+	/* remove border */
+	border: none;
+	/* curve edges */
+	border-radius: 10px;
+	/* set background */
+	background-color: #62cc62;
+	/* text color */
+	color: white;
+	/* font weight */
+	font-weight: 700;
+	/* font size */
+	font-size: 1.25em;
+	/* transition setup */
+	transition: all 0.3s ease-out;
+	/* cursor behavior */
+	cursor: pointer;
+}
+
+#confirmation {
+	position: absolute;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+	width: 100vw;
+	top: 0;
+	left: 0;
+	background-color: rgba(0,0,0,0.5);
+	z-index: 1;
+}
+
+.card {
+	display: flex;
+	flex-direction: column;
+	padding: 5vh 5vw;
+	border-radius: 2.5vh;
+	background-color: var(--light-grey)
+}
+
+#confirm-stay {
+	/* make the buttons bigger */
+	height: 3em;
+	width: 210px;
+	margin: 0 1em;
+	/* remove border */
+	border: none;
+	/* curve edges */
+	border-radius: 10px;
+	/* set background */
+	background-color: #ed7b88;
+	/* text color */
+	color: white;
+	/* font weight */
+	font-weight: 700;
+	/* font size */
+	font-size: 1.05em;
+	/* transition setup */
+	transition: all 0.3s ease-out;
+	/* cursor behavior */
+	cursor: pointer;
+}
+
+.card > p {
+	color: var(--black);
+	font-size: 2em;
+	font-weight: 700;
+}
+
+#confirm-close {
+	/* make the buttons bigger */
+	height: 3em;
+	width: 210px;
+	margin: 0 1em;
+	/* remove border */
+	border: none;
+	/* curve edges */
+	border-radius: 10px;
+	/* set background */
+	background-color: #62cc62;
+	/* text color */
+	color: white;
+	/* font weight */
+	font-weight: 700;
+	/* font size */
+	font-size: 1.05em;
+	/* transition setup */
+	transition: all 0.3s ease-out;
+	/* cursor behavior */
+	cursor: pointer;
+}

@@ -105,7 +105,6 @@ input:checked[type="checkbox"]::before {
 
 /* make footer wider */
 footer {
-	height: 10vh;
 	width: 100%;
 	position: absolute;
 	bottom: 0;
