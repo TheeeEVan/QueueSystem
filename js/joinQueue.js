@@ -40,3 +40,9 @@ document.getElementById("confirm-leave").addEventListener("click", () => {
 document.getElementById("confirm-stay").addEventListener("click", () => {
     document.getElementById("confirmation").classList.toggle("hidden")
 })
+
+/* QUEUE HANDLING */
+var peer = new Peer({host: "queue-system-server.herokuapp.com", port: "443", secure: true});
+peer.on('open', function(id) {
+	console.log('My peer ID is: ' + id);
+});
