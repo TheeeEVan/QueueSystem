@@ -10,6 +10,7 @@ h2 {
 	justify-content: center;
 	align-content: center;
 	gap: 8px;
+	margin-bottom: 2em;
 }
 
 #close-button {
@@ -44,6 +45,28 @@ h2 {
 	border-radius: 10px;
 	/* set background */
 	background-color: #62cc62;
+	/* text color */
+	color: white;
+	/* font weight */
+	font-weight: 700;
+	/* font size */
+	font-size: 1.25em;
+	/* transition setup */
+	transition: all 0.3s ease-out;
+	/* cursor behavior */
+	cursor: pointer;
+}
+
+#save-button {
+	/* make the buttons bigger */
+	height: 2em;
+	width: 225px;
+	/* remove border */
+	border: none;
+	/* curve edges */
+	border-radius: 10px;
+	/* set background */
+	background-color: #e7c944;
 	/* text color */
 	color: white;
 	/* font weight */

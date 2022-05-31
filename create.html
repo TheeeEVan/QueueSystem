@@ -36,15 +36,18 @@
 		<main>
 			<div id="create-queue">
 				<h1>Your Queue</h1>
-				<h2>ID: 56472</h2>
-				<h2>Total Queue Members: 13</h2>
+				<h2 id="queue-id">ID: <em>Loading...</em></h2>
+				<h2 id="queue-members">Total Queue Members: 0</h2>
 				<br/>
-				<h2>Current Queue Member: Jeremy</h2>
+				<h2 id="queue-current">Current Queue Member: _______</h2>
 				<br/>
 				<br/>
 				<div class="button-container">
-					<button id="next-button">Next Queue Member</button>
+					<button id="next-button" onclick="next()">Next Queue Member</button>
 					<button id="close-button">Close Queue</button>
+				</div>
+				<div class="button-container">
+					<button id="save-button" onclick="save()">Save Queue</button>
 				</div>
 			</div>
 			<div id="confirmation" class="hidden">
@@ -67,6 +70,7 @@
 			<p class="back-home"><a href="./">Back Home</a></p>
 		</footer>
 		<!-- all of the scripts required -->
+		<script src="/js/filesaver.min.js"></script>
 		<script src="/js/peer.min.js" ></script>
 		<script src="/js/darkmode.js" ></script>
 		<script src="/js/createQueue.js"></script>
