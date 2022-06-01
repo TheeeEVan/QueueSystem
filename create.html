@@ -1,9 +1,10 @@
 <!-- join.html | the page designed to join queues -->
 <!DOCTYPE html>
-<html>
+<html lang="en" translate="no">
 	<head>
 	  	<meta charset="utf-8">
 	  	<meta name="viewport" content="width=device-width">
+		<meta name="google" content="notranslate">
 	  	<title>Queue System</title>
 	  	<link href="./css/index.css" rel="stylesheet" type="text/css" />
 		<link href="./css/create.css" rel="stylesheet" type="text/css" />
@@ -39,7 +40,10 @@
 				<h2 id="queue-id">ID: <em>Loading...</em></h2>
 				<h2 id="queue-members">Total Queue Members: 0</h2>
 				<br/>
-				<h2 id="queue-current">Current Queue Member: _______</h2>
+				<h2 class="underline">Queue</h2>
+				<ul class="list" id="list">
+					<!-- List of queue members will get injected here -->
+				</ul>
 				<br/>
 				<br/>
 				<div class="button-container">

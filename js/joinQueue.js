@@ -6,11 +6,13 @@ designed to handle the networking for joining a queue as well as displaying rele
 
 */
 
-var join = new Audio('assets/joinqueue.wav');
-var leave = new Audio('assets/leavequeue.wav');
-var yourturn = new Audio('assets/yourturn.wav');
+let join = new Audio('assets/joinqueue.wav');
+let leave = new Audio('assets/leavequeue.wav');
+let yourturn = new Audio('assets/yourturn.wav');
 
-var conn // this will keep conection in main scope
+let conn // this will keep conection in main scope
+
+let properConnection = false
 
 let kicked = false // stop user from sending leave message when kicked
 
@@ -32,6 +34,11 @@ function turn() {
 // when join queue button is pressed switch to queue page
 document.getElementById("join-queue-button").addEventListener("click", () => {
     joinQueue()
+	setTimeout(() => {
+		if (!properConnection) {
+			alert("Invalid Queue ID")
+		}
+	}, 500)
 })
 
 // when leave queue button is pressed open confirmation modal
@@ -56,10 +63,20 @@ function joinQueue() {
     conn = peer.connect(document.getElementById("connection-id").value, {metadata: {name: document.getElementById("name").value}});
     conn.on('open', function() {
         console.log("connected")
-        // for now just switch to queue screen
+		
+		// remove join queue screen
         document.getElementById("join-queue").classList.toggle("hidden")
-        document.getElementById("in-queue").classList.toggle("hidden")
-        join.play()
+
+		// wait 500ms for host authentication
+		setTimeout(() => {
+			if (properConnection)
+			{
+				document.getElementById("in-queue").classList.toggle("hidden")
+			} else {
+				alert("Invalid Queue ID")
+				document.location.reload()
+			}
+		}, 500)
     })
 
     // if connection gets closed leave
@@ -70,19 +87,25 @@ function joinQueue() {
     })
 
     conn.on('data', function(data) {
-        console.log(data)
-        document.getElementById("current-position").innerHTML = "Current Position: " + data
-
-        if (data.startsWith("1/")) {
-            turn()
-        }
-
-        if (data.startsWith("kicked")) {
-            // leave queue
-            kicked = true
-            leave.play()
-            setTimeout(() => {window.location.href = "index.html"}, 1500)
-        }
+		// this is our "authentication"
+		if (data == "host") {
+			properConnection = true
+		} else {
+		
+	        console.log(data)
+	        document.getElementById("current-position").innerHTML = "Current Position: " + data
+	
+	        if (data.startsWith("1/")) {
+	            turn()
+	        }
+	
+	        if (data.startsWith("kicked")) {
+	            // leave queue
+	            kicked = true
+	            leave.play()
+	            setTimeout(() => {window.location.href = "index.html"}, 1500)
+	        }
+		}
     })
 }
 

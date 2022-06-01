@@ -33,6 +33,7 @@ peer.on('open', function(id) {
 
 peer.on('connection', function(conn) { 
 	conn.on('open', function(data) {
+		conn.send("host")
 		console.log(conn.metadata.name + " has joined the queue")
 		queue.push({peerId: conn.peer, name: conn.metadata.name, conn: conn})
 		updateQueue()
@@ -54,6 +55,13 @@ peer.on('connection', function(conn) {
 
 // update queue and send data to all peers
 function updateQueue() {
+	// update ui
+	let list = document.getElementById("list");
+	list.innerHTML = ""
+
+	queue.forEach(member => {
+		list.innerHTML += `<li ${queue.indexOf(member) == 0 ? 'class="first"' : ''} id="${member.peerId}" onclick="kick(${member.peerId})" data-kick="0">${member.name}</li>`
+	})
 	// send position data
 	queue.forEach((member, index) => {
 		member.conn.send(index + 1 + "/" + queue.length)
@@ -80,8 +88,26 @@ function save() {
 	saveAs(textFile, "queue.txt")
 }
 
-// this will update the ui with the queue every second
-setInterval(() => {
-	document.getElementById("queue-members").innerHTML = "Total Queue Members: " + queue.length
-	document.getElementById("queue-current").innerHTML = "Current Queue Member: " + (queue[0].name || "_____") // this spits out tons of errors if queue is empty but it works
-}, 1000)
+function kick(id) {
+	let listItem = document.getElementById(id)
+	 if (listItem.dataset.kick == 0) {
+		listItem.classList.add("confirmDelete")
+		listItem.dataset.kick = 1
+
+		setTimeout(() => {
+			if (listItem.dataset.kick == 2) {
+				listItem.dataset.kick = 0;
+				let kicked = queue.splice(queue.map(client => client.peerId).indexOf(id), 1);
+				kicked[0].conn.send("kicked")
+				updateQueue()
+			} else {
+				listItem.classList.remove("confirmDelete");
+			}
+		}, 2000)
+	 } else if (listItem.dataset.kick == 1) {
+		 listItem.dataset.kick = 2
+		 listItem.classList.remove("confirmDelete")
+		 listItem.innerHTML = "Removing..."
+		 listItem.style = "color: red !important;text-decoration: none !important;"
+	 }
+}

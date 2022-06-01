@@ -5,6 +5,12 @@ h2 {
 	margin-top: -1em;
 }
 
+.underline {
+	text-decoration: underline;
+	text-underline-offset: 0.1em;
+	text-decoration-thickness: 0.1em;
+}
+
 .button-container {
 	display: flex;
 	justify-content: center;
@@ -79,6 +85,8 @@ h2 {
 	cursor: pointer;
 }
 
+
+
 #confirmation {
 	position: absolute;
 	display: flex;
@@ -150,4 +158,38 @@ h2 {
 	transition: all 0.3s ease-out;
 	/* cursor behavior */
 	cursor: pointer;
+}
+
+.list {
+	display: table;
+	margin: 0 auto;
+	list-style: none;
+	/* overide default value */
+	padding-inline-start: 0;
+}
+
+.list li {
+	color: var(--black);
+	font-weight: 500;
+	font-size: 1.5rem;
+	text-align: center;
+}
+
+.list li:hover {
+	text-decoration: line-through;
+	cursor: pointer;
+} 
+
+.confirmDelete::after {
+	content: "Click Again to Confirm";
+	color: red;
+	font-size: 0.8rem;
+	position: absolute;
+	margin-left: 1em;
+	margin-top: 0.5rem;
+}
+
+.first {
+	/* the list item selector is more specific so we use !important */
+	color: #3fa23f !important;
 }
