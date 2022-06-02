@@ -6,10 +6,6 @@ designed to handle the networking for joining a queue as well as displaying rele
 
 */
 
-let join = new Audio('assets/joinqueue.wav');
-let leave = new Audio('assets/leavequeue.wav');
-let yourturn = new Audio('assets/yourturn.wav');
-
 let conn // this will keep conection in main scope
 
 let properConnection = false
@@ -25,9 +21,9 @@ peer.on('open', function(id) {
 
 function turn() {
     if (document.getElementById("turn").classList.contains("hidden")) {
+		sendNotification();
         document.getElementById("turn").classList.toggle("hidden")
         document.getElementById("in-queue").classList.toggle("hidden")
-        yourturn.play()
     }
 }
 
@@ -49,7 +45,6 @@ document.getElementById("leave-button").addEventListener("click", () => {
 // if confirmation modal is confirmed leave queue
 document.getElementById("confirm-leave").addEventListener("click", () => {
     // leave queue
-    leave.play()
     setTimeout(() => {window.location.href = "index.html"}, 1500)
 })
 
@@ -82,7 +77,6 @@ function joinQueue() {
     // if connection gets closed leave
     conn.on('close', function() {
         // leave queue
-        leave.play()
         setTimeout(() => {window.location.href = "index.html"}, 1500)
     })
 
@@ -99,11 +93,10 @@ function joinQueue() {
 	            turn()
 	        }
 	
-	        if (data.startsWith("kicked")) {
+	        if (data.startsWith("kicked") || data.startsWith("removed")) {
 	            // leave queue
 	            kicked = true
-	            leave.play()
-	            setTimeout(() => {window.location.href = "index.html"}, 1500)
+	            setTimeout(() => {sendNotification("You've been kicked from the queue.");window.location.href = "index.html"}, 1500)
 	        }
 		}
     })

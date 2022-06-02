@@ -60,8 +60,12 @@ function updateQueue() {
 	list.innerHTML = ""
 
 	queue.forEach(member => {
-		list.innerHTML += `<li ${queue.indexOf(member) == 0 ? 'class="first"' : ''} id="${member.peerId}" onclick="kick(${member.peerId})" data-kick="0">${member.name}</li>`
+		list.innerHTML += `<li ${queue.indexOf(member) == 0 ? 'class="first"' : ''} id="${member.peerId}" onclick="kick('${member.peerId}')" data-kick="0">${member.name}</li>`
 	})
+
+	if (list.innerHTML == "") {
+		list.innerHTML = "<li style='text-decoration: none !important'><em>It's quiet in here...</em></li>"
+	}
 	// send position data
 	queue.forEach((member, index) => {
 		member.conn.send(index + 1 + "/" + queue.length)
@@ -72,7 +76,7 @@ function updateQueue() {
 function next() {
 	let removed = queue.splice(0, 1)
 	// sends message saying they were removed from queue
-	removed[0].conn.send("kicked")
+	removed[0].conn.send("removed")
 	updateQueue()
 }
 
@@ -102,6 +106,7 @@ function kick(id) {
 				updateQueue()
 			} else {
 				listItem.classList.remove("confirmDelete");
+				listItem.dataset.kick = 0;
 			}
 		}, 2000)
 	 } else if (listItem.dataset.kick == 1) {
@@ -111,3 +116,5 @@ function kick(id) {
 		 listItem.style = "color: red !important;text-decoration: none !important;"
 	 }
 }
+
+updateQueue()
