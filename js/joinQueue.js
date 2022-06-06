@@ -96,7 +96,7 @@ function joinQueue() {
 	        if (data.startsWith("kicked") || data.startsWith("removed")) {
 	            // leave queue
 	            kicked = true
-	            setTimeout(() => {sendNotification("You've been kicked from the queue.");window.location.href = "index.html"}, 1500)
+	            setTimeout(() => { if (data.startsWith("kicked")) {sendNotification("You've been kicked from the queue.")};window.location.href = "index.html"}, 1500)
 	        }
 		}
     })
