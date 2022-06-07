@@ -59,7 +59,7 @@ h1 {
 	transition: color 0.3s ease-out;
 }
 
-/* svg */
+/* svg positioning */
 .moon {
 	position: absolute;
 	top: 0.8em;
@@ -72,34 +72,48 @@ h1 {
 
 /* darkmode toggle switch styles */
 input[type="checkbox"] {
+	/* literally get rid of the switch appearence entirely */
 	-webkit-appearance: none;
+	/* positioning */
 	position: absolute;
 	top: 1em;
 	left: 4vw;
-	background-color: var(--light-grey);
 	width: 4vw;
 	height: 1.5vw;
 	max-height: 30px;
 	max-width: 80px;
+	/* background color */
+	background-color: var(--light-grey);
+	/* curved border to make oval */
 	border-radius: 20px;
+	/* transition the color */
 	transition: background-color 0.3s ease-out;
 }
 
+/* adds the circle to the switch */
 input[type="checkbox"]::before {
+	/* no content */
 	content: "";
+	/* position far left of switch */
 	position: absolute;
 	left: 0;
 	width: 1.5vw;
 	height: 1.5vw;
 	max-width: 33px;
 	max-height: 33px;
+	/* set color */
 	background-color: var(--grey);
+	/* make it a circle */
 	border-radius: 1vw;
+	/* scale a little bit to add *depth* */
 	transform: scale(1.1);
+	/* transition the background color as well as the left for when it moves */
 	transition: background-color 0.3s ease-out, left 0.3s ease-out;
 }
 
+/* the content before the checkbox when it is checked */
 input:checked[type="checkbox"]::before {
+	/* calculate where to put the circle depending if its at it's max width or not */
 	left: min(calc(4vw -  1.5vw), 80px - 33px);
 }
 
@@ -145,6 +159,7 @@ footer > p {
 	cursor: pointer;
 }
 
+/* move back home link to the bottom */
 .back-home {
 	position: absolute;
 	left: 1em;

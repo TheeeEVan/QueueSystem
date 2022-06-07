@@ -1,10 +1,16 @@
+/* sub heading */
 h2 {
+	/* color */
 	color: var(--black);
+	/* transition */
 	transition: color 0.3s ease-out;
+	/* center */
 	text-align: center;
+	/* move up a little */
 	margin-top: -1em;
 }
 
+/* flexbox supremecy */
 .button-container {
 	display: flex;
 	justify-content: center;
@@ -33,10 +39,12 @@ h2 {
 	cursor: pointer;
 }
 
+/* on hover make it darker */
 .leave-button:hover {
 	background-color: var(--dark-orange);
 }
 
+/* big flex box container that is semi transparent and takes up whole screen in front of everything else */
 #confirmation {
 	position: absolute;
 	display: flex;
@@ -50,11 +58,17 @@ h2 {
 	z-index: 1;
 }
 
+/* card */
 .card {
+	/* more flexbox */
 	display: flex;
+	/* vertical flex */
 	flex-direction: column;
+	/* padding */
 	padding: 5vh 5vw;
+	/* curvy */
 	border-radius: 2.5vh;
+	/* color */
 	background-color: var(--light-grey)
 }
 
@@ -81,6 +95,7 @@ h2 {
 	cursor: pointer;
 }
 
+/* text is black varible and big */
 .card > p {
 	color: var(--black);
 	font-size: 2em;
@@ -110,6 +125,7 @@ h2 {
 	cursor: pointer;
 }
 
+/* its the button container but for inputs */
 .input-container {
 	margin-top: 3em;
 	display: flex;
@@ -118,37 +134,48 @@ h2 {
 	justify-content: center;
 }
 
+/* input box */
 input[type="text"] {
+	/* border */
 	border: var(--light-grey) solid 2px;
+	/* curvy */
 	border-radius: 5px;
-	transition: outline 0.3s ease-out, border 0.5s ease-out;
+	/* use the right font */
 	font: inherit;
+	/* big text */
 	font-weight: 700;
 	font-size: 1.25em;
+	/* center text */
 	text-align: center;
+	/* padding */
 	padding: 10px;
+	/* more margin */
 	margin-bottom: 1em;
+	/* remove default outline */
 	outline: none;
+	/* transition all the things */
+	transition: outline 0.3s ease-out, border-color 0.5s ease-out;
 }
 
+/* make the placeholder text lighter */
 input[type="text"]::placeholder {
 	color: var(--light-grey);
 	transition: color 0.3s ease-out;
 }
 
+/* when the input is focused remove placeholder text */ 
 input[type="text"]:focus::placeholder {
 	color: transparent;
 }
 
+/* change border on focus */
 input[type="text"]:focus {
-	outline: var(--blue) solid 3px;
-	border-radius: 3px;
-	border: none;
+	border-color: var(--blue);
 }
 
-/* dark mode outline why */
+/* dark mode outline, idk whats happening */
 .dark-mode > main > div > div > input[type="text"]:focus {
-	outline: var(--orange) solid 3px;
+	border-color: var(--orange);
 }
 
 #join-queue-button {
@@ -174,10 +201,12 @@ input[type="text"]:focus {
 	cursor: pointer;
 }
 
+/* make color darker on hover */
 #join-queue-button:hover {
 	background-color: #3f9c3f;
 }
 
+/* color shadow and size for confirm title */
 .confirm-title {
 	color: lightgreen;
 	text-shadow: -1px -1px 0 var(--black), 1px -1px 0 var(--black), -1px 1px 0 var(--black), 1px 1px 0 var(--black);

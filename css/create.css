@@ -1,16 +1,23 @@
+/* sub headings */
 h2 {
+	/* set color to black variable */
 	color: var(--black);
+	/* transition color */
 	transition: color 0.3s ease-out;
+	/* center */
 	text-align: center;
+	/* move up */
 	margin-top: -1em;
 }
 
+/* add underline and adjust underline appearence */
 .underline {
 	text-decoration: underline;
 	text-underline-offset: 0.1em;
 	text-decoration-thickness: 0.1em;
 }
 
+/* make buttons in flexbox */
 .button-container {
 	display: flex;
 	justify-content: center;
@@ -86,25 +93,38 @@ h2 {
 }
 
 
-
+/* confirmation window */
 #confirmation {
+	/* set absolute positioning */
 	position: absolute;
+	/* flexbox */
 	display: flex;
+	/* center items */
 	align-items: center;
 	justify-content: center;
+	/* full height & width */
 	height: 100vh;
 	width: 100vw;
+	/* top left */
 	top: 0;
 	left: 0;
+	/* half transparent to make page darker */
 	background-color: rgba(0,0,0,0.5);
+	/* move ahead */
 	z-index: 1;
 }
 
+/* confirmation card */
 .card {
+	/* flexbox */
 	display: flex;
+	/* display vetically */
 	flex-direction: column;
+	/* padding */
 	padding: 5vh 5vw;
+	/* curvy */
 	border-radius: 2.5vh;
+	/* set background to a varible */
 	background-color: var(--light-grey)
 }
 
@@ -131,8 +151,11 @@ h2 {
 	cursor: pointer;
 }
 
+/* text in card */
 .card > p {
+	/* black varible for text color */
 	color: var(--black);
+	/* bigger text */
 	font-size: 2em;
 	font-weight: 700;
 }
@@ -160,7 +183,9 @@ h2 {
 	cursor: pointer;
 }
 
+/* the list */
 .list {
+	/* display as table with no margin or dots */
 	display: table;
 	margin: 0 auto;
 	list-style: none;
@@ -168,18 +193,24 @@ h2 {
 	padding-inline-start: 0;
 }
 
+/* list items */
 .list li {
+	/* black variable */
 	color: var(--black);
+	/* bigger text */
 	font-weight: 500;
 	font-size: 1.5rem;
+	/* center text */
 	text-align: center;
 }
 
+/* strike through on list item hover */
 .list li:hover {
 	text-decoration: line-through;
 	cursor: pointer;
 } 
 
+/* sets text to the right of a confirm delete class */
 .confirmDelete::after {
 	content: "Click Again to Confirm";
 	color: red;
@@ -189,6 +220,7 @@ h2 {
 	margin-top: 0.5rem;
 }
 
+/* first item in the list should be green */
 .first {
 	/* the list item selector is more specific so we use !important */
 	color: #3fa23f !important;
