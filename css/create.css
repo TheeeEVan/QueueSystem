@@ -210,16 +210,6 @@ h2 {
 	cursor: pointer;
 } 
 
-/* sets text to the right of a confirm delete class */
-.confirmDelete::after {
-	content: "Click Again to Confirm";
-	color: red;
-	font-size: 0.8rem;
-	position: absolute;
-	margin-left: 1em;
-	margin-top: 0.5rem;
-}
-
 /* first item in the list should be green */
 .first {
 	/* the list item selector is more specific so we use !important */

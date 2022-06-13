@@ -12,13 +12,17 @@ let properConnection = false // changes when a proper connection is confirmed
 
 let kicked = false // stop user from sending leave message when kicked
 
-/* QUEUE HANDLING */
-// connect to queue server using an https connection
-var peer = new Peer({host: "queue-system-server.herokuapp.com", port: "443", secure: true, key: "peerjs"});
-// when an id is revieved, log it for debugging purposes
-peer.on('open', function(id) {
-	console.log('My peer ID is: ' + id);
-});
+if (typeof io == 'undefined') {
+	alert("The server is currently down. Please try again later.")
+	window.location.href = "/"
+}
+
+// connect to socket
+const socket = io("https://queue-system-server.herokuapp.com/", {
+	extraHeaders: {
+		"type": "client"
+	}
+})
 
 // this function runs when its the users turn
 function turn() {
@@ -45,7 +49,7 @@ document.getElementById("leave-button").addEventListener("click", () => {
 // if confirmation modal is confirmed leave queue
 document.getElementById("confirm-leave").addEventListener("click", () => {
     // leave queue
-    setTimeout(() => {window.location.href = "index.html"}, 1500)
+    window.location.href = "/"
 })
 
 // if confirmation modal is cancelled close modal
@@ -56,7 +60,7 @@ document.getElementById("confirm-stay").addEventListener("click", () => {
 function joinQueue() {
 	let leave = false
 	// check for id
-	if (document.getElementById("connection-id").value.trim().length != 5) 
+	if (document.getElementById("connection-id").value.trim().length != 4) 
 	{
 		document.getElementById("connection-id").style = "border-color: red;"
 		leave = true
@@ -74,63 +78,41 @@ function joinQueue() {
 	// if name or id is empty we dont join queue
 	if (leave) return;
 	
-	// join queue based on the id and name provided
-	conn = peer.connect(document.getElementById("connection-id").value, {metadata: {name: document.getElementById("name").value}});
-	// on connection open
-	conn.on('open', function() {
+	socket.emit("join-queue", {id: document.getElementById("connection-id").value, name: document.getElementById("name").value})
+}
+
+socket.on("join-status", (data) => {
+	if (data.status == 1) {
 		// remove join queue screen
 		document.getElementById("join-queue").classList.toggle("hidden")
+		document.getElementById("in-queue").classList.toggle("hidden")
+	} else {
+		document.getElementById("error").innerHTML = data.reason
+		document.getElementById("error").style = "display: block"
 
-		// wait 500ms for host authentication
-		setTimeout(() => {
-			if (properConnection)
-			{
-				// if authenticated show in queue screen
-				document.getElementById("in-queue").classList.toggle("hidden")
-			} else {
-				// else alert user and reload page
-				alert("Invalid Queue ID")
-				document.location.reload()
-			}
-		}, 500)
-	})
-
-	// if connection gets closed leave
-	conn.on('close', function() {
-		// leave page after 1500ms to finish any data transfers
-		setTimeout(() => {window.location.href = "index.html"}, 1500)
-	})
-
-	// on data
-	conn.on('data', function(data) {
-		// this is our "authentication"
-		if (data == "host") {
-			properConnection = true
-		} else {
-			// any other data will be a position so we show the user this data
-			document.getElementById("current-position").innerHTML = "Current Position: " + data
-
-			// if data starts with "1/" the its the user's turn so we run turn function
-			if (data.startsWith("1/")) {
-				turn()
-			}
-
-			// if user is kicked or removed they will be removed from page after 1500ms
-			// uif user was kicked they will also be notified
-			if (data.startsWith("kicked") || data.startsWith("removed")) {
-				// leave queue
-				kicked = true
-				setTimeout(() => { if (data.startsWith("kicked")) {sendNotification("You've been kicked from the queue.")};window.location.href = "index.html"}, 1500)
-			}
+		if (data.reason == "That name is being used!") {
+			document.getElementById("name").style = "border-color: red;"
+			setTimeout(() => {document.getElementById("name").style = ""}, 2000)
+		} else if (data.reason == "Invalid queue code!") {
+			document.getElementById("connection-id").style = "border-color: red;"
+			setTimeout(() => {document.getElementById("connection-id").style = ""}, 2000)
 		}
-	})
-}
+	}
+})
 
-// if user closes window
-window.onbeforeunload = function(){
-    // if not kicked, send leaving
-    if (!kicked || !removed) {
-        conn.send("leaving");
-    }
-}
+socket.on("position", (data) => {
+	if (data.current == 1) {
+		turn()
+	} else {
+		document.getElementById("current-position").innerHTML = `Current position: ${data.current}/${data.total}`
+	}
+})
+
+socket.on("disconnected", (data) => {
+	if (data.reason != "first") {
+		sendNotification(data.reason);
+	}
+	window.location.href = "/"
+})
+
 
