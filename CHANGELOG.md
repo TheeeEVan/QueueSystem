@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [2.0.0](https://github.com/TheeeEVan/QueueSystem/releases/tag/v2.0.0) - 2022-06-13
-Obviously wasn't expecting to to go right from v1 to v2 however with the issues on LAN with peerjs i figured the changes are significant enough for a major version change. Hopefully everything works better on this new system. I'm sure there's lots of bugs but that's what new versions are for.
+Obviously wasn't expecting 	to go right from v1 to v2 however with the issues on LAN with peerjs i figured the changes are significant enough for a major version change. Hopefully everything works better on this new system. I'm sure there's lots of bugs but that's what new versions are for.
 
 ### Added
 - This changelog
