@@ -43,6 +43,7 @@
 					<input type="text" id="name" class="textbox" placeholder="your name"/>
 					<button class="button" id="join-queue-button">Join Queue</button>
 				</div>
+				<h2 id="error"></h2>
 			</div>
 			<div id="in-queue" class="hidden">
 				<h1>You are in queue!</h1>
@@ -75,9 +76,10 @@
 				<li><a href="https://github.com/TheeeEVan/QueueSystem" >github</a></li>
 			</ul>
 			<p class="back-home"><a href="./">Back Home</a></p>
+			<p class="version">v2.0.0</p>
 		</footer>
 		<!-- all of the scripts required -->
-		<script src="./js/peer.min.js" ></script>
+		<script src="https://queue-system-server.herokuapp.com/socket.io/socket.io.js" ></script>
 		<script src="./js/darkmode.js" ></script>
 		<script src="./js/notifications.js"></script>
 		<script src="./js/joinQueue.js" ></script>

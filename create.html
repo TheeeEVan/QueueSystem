@@ -64,7 +64,7 @@
 					<p>Are you sure you want to close the queue?</p>
 					<div class="button-container">
 						<button id="confirm-stay">No, Continue the Queue</button>
-						<button id="confirm-close">Yes, Destroy the Queue</button>
+						<button id="confirm-close" onclick="close()">Yes, Destroy the Queue</button>
 					</div>
 				</div>
 			</div>
@@ -77,10 +77,11 @@
 				<li><a href="https://github.com/TheeeEVan/QueueSystem" >github</a></li>
 			</ul>
 			<p class="back-home"><a href="./">Back Home</a></p>
+			<p class="version">v2.0.0</p>
 		</footer>
 		<!-- all of the scripts required -->
 		<script src="./js/filesaver.min.js"></script>
-		<script src="./js/peer.min.js" ></script>
+		<script src="https://queue-system-server.herokuapp.com/socket.io/socket.io.js" ></script>
 		<script src="./js/darkmode.js" ></script>
 		<script src="./js/createQueue.js"></script>
 	</body>

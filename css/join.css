@@ -212,3 +212,9 @@ input[type="text"]:focus {
 	text-shadow: -1px -1px 0 var(--black), 1px -1px 0 var(--black), -1px 1px 0 var(--black), 1px 1px 0 var(--black);
 	font-size: 5em;
 }
+
+#error {
+	color: red;
+	margin-top: 0.5em;
+	display: none;
+}
