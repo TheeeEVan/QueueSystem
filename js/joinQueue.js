@@ -14,7 +14,7 @@ let kicked = false // stop user from sending leave message when kicked
 
 if (typeof io == 'undefined') {
 	alert("The server is currently down. Please try again later.")
-	window.location.href = "/"
+	window.location.href = "./"
 }
 
 // connect to socket
@@ -49,7 +49,7 @@ document.getElementById("leave-button").addEventListener("click", () => {
 // if confirmation modal is confirmed leave queue
 document.getElementById("confirm-leave").addEventListener("click", () => {
     // leave queue
-    window.location.href = "/"
+    window.location.href = "./"
 })
 
 // if confirmation modal is cancelled close modal

@@ -21,7 +21,7 @@ document.getElementById("confirm-stay").addEventListener('click', () => {
 
 // when confirmation is confirmed return to home page
 document.getElementById("confirm-close").addEventListener('click', () => {
-	window.location.href = "index.html"
+	window.location.href = "./index.html"
 })
 
 if (typeof io == 'undefined') {
